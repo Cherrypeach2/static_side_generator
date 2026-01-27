@@ -2,10 +2,12 @@ from textnode import *
 from htmlnode import *
 
 def main(): 
-    print("Hello There")
-    node = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
-    print(node.to_html())
     
+    return
+
+   
+def copy_static():
+    return 
     
     
 if __name__ == "__main__":
