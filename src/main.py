@@ -3,13 +3,18 @@ from htmlnode import *
 from generate_content import*
 import os
 import shutil
+import sys
 
 dir_path_static = "./static"
-dir_path_public = "./public"
+dir_path_public = "./doc"
+#dir_path_public = "./public"
 dir_path_content = "./content"
 template_path = "./template.html"
 
 def main():
+    basepath = "/"
+    if len(sys.argv) == 2:
+        basepath = sys.argv[1]
     print("Deleting public directory...")
     delete_destination_contents(dir_path_public)
     
@@ -17,11 +22,7 @@ def main():
     copy_files(dir_path_static, dir_path_public)
     
     print("Generating page...")
-    index_path = os.path.join(dir_path_content, "index.md")
-    dest_path = os.path.join(dir_path_public, "index.html")
-    #generate_page(index_path, template_path, dest_path)
-
-    generate_pages_recursive(dir_path_content, template_path, dir_path_public)
+    generate_pages_recursive(dir_path_content, template_path, dir_path_public, basepath)
     
     return
 
